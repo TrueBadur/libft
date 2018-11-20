@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 16:10:14 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/20 22:06:49 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/20 23:02:18 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,32 +48,33 @@ int test_str(void *exa, void *sol, size_t len, unsigned int tnum)
 
 void opipe(int (*op)[2], int fd)
 {
+	
+	if( pipe(*op) != 0 ) {          /* make a pipe */
+		exit(1);
+	}
+	
 	dup2((*op)[1], fd);   /* redirect stdout to the pipe */
 	close((*op)[1]);
 }
 
-void cpipe(int (*op)[2], char (*buf)[100], int so, FILE *fd)
+int cpipe(int (*op)[2],char *sol, int len, unsigned int *tnum, int so, FILE *fd)
 {
+	static char buffer[100] = {0};
 	fflush(fd);
-	read((*op)[0], *buf, 100); /* read from pipe into buffer */
+	read((*op)[0], buffer, 100); /* read from pipe into buffer */
 	dup2(so, fileno(fd));  /* reconnect stdout for testing */
+	return (test_str(sol, buffer, len, *tnum++));
 }
 
 int test_putnbr_fd(int n, char *sol, int len, unsigned int *tnum, FILE *fd)
 {
-	char buffer[100] = {0};
 	int out_pipe[2];
 	int saved_stdout;
-
 	saved_stdout = dup(fileno(fd));  /* save stdout for display later */
-
-	if( pipe(out_pipe) != 0 ) {          /* make a pipe */
-		exit(1);
-	}
+	
 	opipe(&out_pipe, fileno(fd));
 	ft_putnbr_fd(n, fileno(fd));
-	cpipe(&out_pipe, &buffer, saved_stdout, fd);
-	return (test_str(sol, buffer, len, *tnum++));
+	return cpipe(&out_pipe, sol, len, tnum, saved_stdout, fd);
 }
 
 int main(int argc, char **argv)
@@ -113,8 +114,13 @@ int main(int argc, char **argv)
 	errn += test_putnbr_fd(2147483647, "2147483647", 10, &tnum, f);
 	printf("--------ft_putnbr_fd sucess----------\n");
 
-
-
+	// ft_putnbr
+	errn += test_putnbr_fd(0, "0", 1, &tnum, stdout);
+	errn += test_putnbr_fd(-1, "-1", 2, &tnum, stdout);
+	errn += test_putnbr_fd(1, "1", 1, &tnum, stdout);
+	errn += test_putnbr_fd(-2147483648, "-2147483648", 11, &tnum, stdout);
+	errn += test_putnbr_fd(2147483647, "2147483647", 10, &tnum, stdout);
+	printf("--------ft_putnbr sucess-------------\n");
 
 	if (!errn)
 		printf("\n***************SUCCESS***************\n");
