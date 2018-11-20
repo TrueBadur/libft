@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 17:45:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/20 17:48:42 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/20 21:43:49 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	int tmp;
-	int nb;
-	char nbr;
+	int		tmp;
+	int		nb;
+	char	nbr;
 
 	tmp = 1;
 	if (n < 0)
