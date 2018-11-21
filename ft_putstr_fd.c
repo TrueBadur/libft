@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/21 13:47:09 by ehugh-be         ###   ########.fr       */
+/*   Created: 2018/11/21 13:46:34 by ehugh-be          #+#    #+#             */
+/*   Updated: 2018/11/21 13:46:54 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <stdlib.h>
-# include <unistd.h>
-# include <string.h>
+#include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putnbr(int n);
-void	ft_putchar(char c);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr(char const *s);
-void	ft_putstr_fd(char const *s, int fd);
-#endif
+void	ft_putstr_fd(char const *str, int fd)
+{
+	while (*str)
+	{
+		write(fd, str, 1);
+		str++;
+	}
+}
