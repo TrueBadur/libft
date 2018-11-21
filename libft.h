@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/21 20:12:48 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/21 20:38:32 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ char	*ft_itoa(int n);
 char	*ft_strncpy(char *dst, char const *src, size_t len);
 char	**ft_strsplit(char const *s, char c);
 int		ft_tolower(int c);
+int		ft_toupper(int c);
 #endif
