@@ -22,7 +22,7 @@ all: $(SRC) $(NAME)
 $(NAME): $(OBJ)
 	ar r $(NAME) $(OBJ)
 
-main: $(NAME) main.c clean
+main: $(NAME) main.c 
 	$(CC) $(CFLAGS) main.c -o main $(NAME)
 
 %.o: %.c $(HDR)
