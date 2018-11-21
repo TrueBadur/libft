@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/21 15:34:07 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/21 17:53:26 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@ void	ft_putstr_fd(char const *s, int fd);
 void	ft_putendl(char const *s);
 void	ft_putendl_fd(char const *s, int fd);
 char	*ft_itoa(int n);
+char	*ft_strncpy(char *dst, char const *src, size_t len);
+char	**ft_strsplit(char const *s, char c);
 #endif
