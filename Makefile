@@ -12,7 +12,7 @@
 # **************************************************************************** #
 
 NAME = libft.a
-SRC = $(wildcard *.c) 
+SRC = $(wildcard ft*.c) 
 OBJ=$(SRC:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -26,6 +26,7 @@ main: $(NAME) main.c
 	$(CC) $(CFLAGS) main.c -o main $(NAME)
 
 %.o: %.c $(HDR)
+	norminette $<
 	$(CC) $(CFLAGS) -c $< -o $@
 
 fclean: clean
