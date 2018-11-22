@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/22 16:54:03 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/22 17:31:56 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ char	*ft_strcpy(char *dst, const char *src);
 char	*ft_strdup(const char *s1);
 void	*ft_memalloc(size_t size);
 void	ft_memdel(void **ap);
+void	*ft_memmove(void *dst, const void *src, size_t len);
 #endif
