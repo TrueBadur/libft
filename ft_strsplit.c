@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 16:04:14 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/21 20:29:33 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/23 22:37:16 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,21 @@ static char	**ft_alloc_num_words(char const *s, char c)
 	return (ret);
 }
 
-static void	ft_split(int wlen, char const *wstart, char ***ret)
+static char	*ft_split(int wlen, char const *wstart)
 {
-	**ret = (char *)malloc(sizeof(char) * (wlen + 1));
-	ft_strncpy(**ret, wstart, wlen);
-	(**ret)[wlen] = '\0';
-	(*ret)++;
+	char *ret;
+
+	if (!(ret = (char *)malloc(sizeof(char) * (wlen + 1))))
+		return (NULL);
+	ft_strncpy(ret, wstart, wlen);
+	ret[wlen] = '\0';
+	return (ret);
+}
+
+static void	ft_newword(const char **wstart, int *wlen, const char *s)
+{
+	*wstart = s + 1;
+	*wlen = 1;
 }
 
 char		**ft_strsplit(char const *s, char c)
@@ -52,12 +61,12 @@ char		**ft_strsplit(char const *s, char c)
 	while (*s)
 	{
 		if (*s == c && *(s + 1) != c && *(s + 1) != '\0')
-		{
-			wstart = s + 1;
-			wlen = 1;
-		}
+			ft_newword(&wstart, &wlen, s);
 		else if (*s != c && (*(s + 1) == c || *(s + 1) == '\0'))
-			ft_split(wlen, wstart, &ret);
+		{
+			if (!(*ret++ = ft_split(wlen, wstart)))
+				return (NULL);
+		}
 		else if (*s != c)
 			wlen++;
 		s++;
