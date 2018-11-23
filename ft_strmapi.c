@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 06:40:35 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/23 07:03:30 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/24 00:02:04 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*ret_c;
 	int		i;
 
+	if (!s || !f)
+		return (NULL);
 	i = 0;
 	if (!(ret = malloc(ft_strlen(s) + 1)))
 		return (NULL);
