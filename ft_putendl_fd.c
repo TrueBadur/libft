@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 14:05:46 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/21 14:15:57 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/23 20:51:47 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putendl_fd(char const *str, int fd)
 {
+	if (!str)
+		return ;
 	while (*str)
 	{
 		write(fd, str, 1);
