@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 15:32:43 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/21 15:58:20 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/23 22:36:27 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ char	*ft_itoa(int n)
 		len++;
 		nb /= 10;
 	}
-	ret = (char *)malloc(sizeof(char) * len);
+	if (!(ret = (char *)malloc(sizeof(char) * len)))
+		return (NULL);
 	ret[--len] = '\0';
 	nb = (n < 0) ? -1 : 1;
 	while (n || len)
