@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 07:32:28 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/23 07:36:17 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/23 09:17:12 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_strequ(char const *s1, char const *s2)
 {
-	return ((ft_strcmp(s1, s2) == 0) ? 1 : 0); 
+	return ((ft_strcmp(s1, s2) == 0) ? 1 : 0);
 }
