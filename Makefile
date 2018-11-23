@@ -26,7 +26,9 @@ main: $(NAME) main.c
 	$(CC) $(CFLAGS) main.c -o main $(NAME)
 
 %.o: %.c $(HDR)
+	echo "\x1B[31m"
 	norminette $<
+	echo "\x1B[37m"
 	$(CC) $(CFLAGS) -c $< -o $@
 
 fclean: clean
