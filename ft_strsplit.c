@@ -6,16 +6,16 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 16:04:14 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/23 22:37:16 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/26 17:49:23 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**ft_alloc_num_words(char const *s, char c)
+static int	ft_alloc_num_words(char const *s, char c, char ***ret,
+		char ***ret_c)
 {
 	int		wcount;
-	char	**ret;
 
 	wcount = 0;
 	while (*s)
@@ -24,9 +24,10 @@ static char	**ft_alloc_num_words(char const *s, char c)
 			wcount++;
 		s++;
 	}
-	if (!(ret = (char **)malloc(sizeof(char *) * (wcount + 1))))
-		return (NULL);
-	return (ret);
+	if (!(*ret = (char **)malloc(sizeof(char *) * (wcount + 1))))
+		return (0);
+	*ret_c = *ret;
+	return (1);
 }
 
 static char	*ft_split(int wlen, char const *wstart)
@@ -46,6 +47,17 @@ static void	ft_newword(const char **wstart, int *wlen, const char *s)
 	*wlen = 1;
 }
 
+static void	*ft_ubivator(char ***ret_c)
+{
+	char **ret;
+
+	ret = *ret_c;
+	while (*ret)
+		free(*ret++);
+	free(*ret_c);
+	return (NULL);
+}
+
 char		**ft_strsplit(char const *s, char c)
 {
 	int			wlen;
@@ -53,10 +65,8 @@ char		**ft_strsplit(char const *s, char c)
 	char		**ret;
 	char		**ret_c;
 
-	if (!(ret = ft_alloc_num_words(s, c)))
+	if (!(wlen = ft_alloc_num_words(s, c, &ret, &ret_c)))
 		return (NULL);
-	ret_c = ret;
-	wlen = 1;
 	wstart = s;
 	while (*s)
 	{
@@ -65,7 +75,7 @@ char		**ft_strsplit(char const *s, char c)
 		else if (*s != c && (*(s + 1) == c || *(s + 1) == '\0'))
 		{
 			if (!(*ret++ = ft_split(wlen, wstart)))
-				return (NULL);
+				return (ft_ubivator(&ret));
 		}
 		else if (*s != c)
 			wlen++;
