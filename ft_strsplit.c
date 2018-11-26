@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 16:04:14 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/26 17:49:23 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/26 22:31:38 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	ft_alloc_num_words(char const *s, char c, char ***ret,
 {
 	int		wcount;
 
+	if (!s)
+		return (0);
 	wcount = 0;
 	while (*s)
 	{
