@@ -1,38 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 13:28:07 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/26 15:25:28 by ehugh-be         ###   ########.fr       */
+/*   Created: 2018/11/26 16:30:34 by ehugh-be          #+#    #+#             */
+/*   Updated: 2018/11/26 17:11:53 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+static void	ft_delcont(void *cont, size_t size)
 {
-	t_list	*new;
+	size += 0;
+	free(cont);
+	cont = NULL;
+}
 
-	if (!(new = malloc(sizeof(t_list))))
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+{
+	t_list *ret;
+	t_list *ret_c;
+
+	if (!lst)
 		return (NULL);
-	if (!content)
-	{
-		new->content = NULL;
-		new->content_size = 0;
-	}
-	else if (!(new->content = malloc(content_size)))
-	{
-		free(new);
+	if (!(ret = f(lst)))
 		return (NULL);
-	}
-	else
+	ret_c = ret;
+	lst = lst->next;
+	ret = ret->next;
+	while (lst)
 	{
-		ft_memcpy(new->content, content, content_size);
-		new->content_size = content_size;
+		if (!(ret = f(lst)))
+		{
+			ft_lstdel(&ret_c, &ft_delcont);
+			return (NULL);
+		}
+		lst = lst->next;
+		ret = ret->next;
 	}
-	new->next = NULL;
-	return (new);
+	return (ret_c);
 }
