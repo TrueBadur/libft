@@ -6,17 +6,24 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 16:30:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/26 17:11:53 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/26 23:22:19 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_delcont(void *cont, size_t size)
+static void	*ft_dellst(t_list **lst)
 {
-	size += 0;
-	free(cont);
-	cont = NULL;
+	t_list *tmp;
+
+	while (*lst)
+	{
+		free((*lst)->content);
+		tmp = (*lst)->next;
+		free(*lst);
+		*lst = tmp;
+	}
+	return (NULL);
 }
 
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
@@ -24,22 +31,18 @@ t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	t_list *ret;
 	t_list *ret_c;
 
-	if (!lst)
+	if (!lst || !f)
 		return (NULL);
 	if (!(ret = f(lst)))
 		return (NULL);
 	ret_c = ret;
 	lst = lst->next;
-	ret = ret->next;
 	while (lst)
 	{
-		if (!(ret = f(lst)))
-		{
-			ft_lstdel(&ret_c, &ft_delcont);
-			return (NULL);
-		}
-		lst = lst->next;
+		if (!(ret->next = f(lst)))
+			return (ft_dellst(&ret_c));
 		ret = ret->next;
+		lst = lst->next;
 	}
 	return (ret_c);
 }
