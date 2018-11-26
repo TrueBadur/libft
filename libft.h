@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/23 09:11:49 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/26 13:45:11 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+
+typedef struct		s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}					t_list;
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_putnbr_fd(int n, int fd);
@@ -68,4 +75,5 @@ int		ft_strnequ(char const *s1, char const *s2, size_t n);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s);
+t_list	*ft_lstnew(void const *content, size_t content_size);
 #endif

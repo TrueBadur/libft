@@ -20,22 +20,22 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(SRC) $(NAME)
 
 $(NAME): $(OBJ)
-	ar r $(NAME) $(OBJ)
+	@ar r $(NAME) $(OBJ)
 
 main: $(NAME) main.c 
-	$(CC) $(CFLAGS) main.c -o main $(NAME)
+	@$(CC) $(CFLAGS) main.c -o main $(NAME)
 
 %.o: %.c $(HDR)
 #	echo "\x1B[31m"
 #	norminette $<
 #	echo "\x1B[37m"
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 fclean: clean
-	/bin/rm -f $(NAME) 
+	@/bin/rm -f $(NAME) 
 
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 re: fclean all
 
