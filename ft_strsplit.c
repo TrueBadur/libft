@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 16:04:14 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/26 22:31:38 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/27 16:08:45 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ static void	ft_newword(const char **wstart, int *wlen, const char *s)
 	*wlen = 1;
 }
 
-static void	*ft_ubivator(char ***ret_c)
+static void	*ft_ubivator(char ***ret_c, char **ret_l)
 {
 	char **ret;
 
 	ret = *ret_c;
-	while (*ret)
+	while (ret < ret_l)
 		free(*ret++);
 	free(*ret_c);
 	return (NULL);
@@ -77,7 +77,7 @@ char		**ft_strsplit(char const *s, char c)
 		else if (*s != c && (*(s + 1) == c || *(s + 1) == '\0'))
 		{
 			if (!(*ret++ = ft_split(wlen, wstart)))
-				return (ft_ubivator(&ret));
+				return (ft_ubivator(&ret_c, ret));
 		}
 		else if (*s != c)
 			wlen++;
