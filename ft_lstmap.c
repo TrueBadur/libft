@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 16:30:34 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/26 23:22:19 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/27 19:04:03 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	*ft_dellst(t_list **lst)
 {
 	t_list *tmp;
 
+	if (!lst)
+		return (NULL);
 	while (*lst)
 	{
 		free((*lst)->content);

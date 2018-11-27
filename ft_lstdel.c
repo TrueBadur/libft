@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 14:15:06 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/26 15:24:54 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/27 18:53:04 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
 	t_list	*tmp;
 
-	if (!alst || !*alst)
+	if (!alst || !*alst || !del)
 		return ;
 	while (*alst)
 	{

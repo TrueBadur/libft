@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 15:04:46 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/26 15:09:02 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2018/11/27 19:01:56 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	if (!lst)
+	if (!f)
 		return ;
 	while (lst)
 	{
