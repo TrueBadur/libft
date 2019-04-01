@@ -18,7 +18,7 @@ OBJ = $(SRC:.c=.o)
 OCL_SRC = $(wildcard ft_ocl/*.c)
 OCL_OBJ = $(OCL_SRC:.c=.o)
 CC = clang
-LIBSPATH = -I ./std_lib/
+LIBSPATH = -I ./std_lib/ -I ./std_lib/printf/
 #CFLAGS = -Wall -Wextra -Werror
 
 .c.a:
