@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_delone.c                                    :+:      :+:    :+:   */
+/*   ft_avlfixh.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 13:50:44 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/27 19:01:06 by ehugh-be         ###   ########.fr       */
+/*   Created: 2018/12/05 13:19:22 by ehugh-be          #+#    #+#             */
+/*   Updated: 2018/12/07 02:35:11 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+void	ft_avlfixh(t_btavl *tr)
 {
-	if (!alst || !*alst || !del)
+	unsigned char rh;
+	unsigned char lh;
+
+	if (!tr)
 		return ;
-	del((*alst)->content, (*alst)->content_size);
-	free(*alst);
-	*alst = NULL;
-	alst = NULL;
+	rh = ft_avlh(tr->right);
+	lh = ft_avlh(tr->left);
+	tr->h = ((rh > lh) ? rh : lh) + 1;
 }

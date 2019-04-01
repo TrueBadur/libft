@@ -6,15 +6,25 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/28 14:35:46 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/03/19 18:06:29 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
+# include "get_next_line.h"
+# include "t_vec.h"
+# include "btavl.h"
+# include "mtrx.h"
 # include <unistd.h>
 # include <string.h>
+# define IN_RNGII(a, b, c) ((a) <= (b) && (b) <= (c))
+# define IN_RANGE_CI(a, b, c) ((a) < (b) && (b) <= (c))
+# define IN_RANGE_IC(a, b, c) ((a) <= (b) && (b) < (c))
+# define IN_RANGE_CC(a, b, c) ((a) < (b) && (b) < (c))
+# define FT_ABS(x) (((x) > 0) ? (x) : -(x))
+# define FT_SIGN(x) (((x) > 0) ? 1 : -1)
 
 typedef struct		s_list
 {
@@ -32,16 +42,19 @@ void				ft_putstr(char const *s);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
-char				*ft_itoa(int n);
+char				*ft_itoa(long n);
 char				*ft_strncpy(char *dst, char const *src, size_t len);
 char				**ft_strsplit(char const *s, char c);
 int					ft_tolower(int c);
+char				*ft_tolower_str(char *str);
 int					ft_toupper(int c);
+char				*ft_toupper_str(char *str);
 int					ft_isprint(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isalpha(int c);
 int					ft_isalnum(int c);
+char				*ft_int_to_unicode(int n, char *bytes);
 size_t				ft_strlen(const char *s);
 int					ft_atoi(const char *st);
 char				*ft_strcpy(char *dst, const char *src);
@@ -89,4 +102,13 @@ int					ft_abs(int a);
 int					ft_isspace(int c);
 void				ft_foreachint(int **arr, size_t len, void (*f)(int *n));
 int					*ft_foreachintm(const int *arr, size_t len, int (*f)(int));
+int					ft_sqrt(int c);
+int					ft_atoi_m(const char **str);
+char				*ft_itoa_base(__int128_t n, int rad);
+void				*ft_realloc(void *old_data, size_t prev_size,
+		size_t new_size);
+size_t				ft_strlen_u(const int *s, char f);
+char				ft_unilen(int u);
+int					ft_intlen(long int n);
+char				*ft_itoa_buf(long n, char *res);
 #endif

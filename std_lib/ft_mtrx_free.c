@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_mtrx_free.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/18 15:46:57 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/22 13:48:34 by ehugh-be         ###   ########.fr       */
+/*   Created: 2019/01/10 22:34:09 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/01/11 04:17:55 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mtrx.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_mtrx_destroy(t_mtrx **mtrx)
 {
-	size_t len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
+	if (!mtrx || !*mtrx)
+		return ;
+	free((*mtrx)->mtrx);
+	free(*mtrx);
+	*mtrx = NULL;
 }

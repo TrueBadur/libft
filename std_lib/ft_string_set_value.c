@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 17:01:53 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/24 15:00:05 by ehugh-be         ###   ########.fr       */
+/*   Created: 2019/01/16 22:40:21 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/01/16 23:44:33 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int			ft_string_set_value(t_string **str, size_t n, char filler,
+																char value)
 {
-	char	*dst_c;
-	char	*src_c;
+	size_t i;
 
-	dst_c = (char*)dst;
-	src_c = (char*)src;
-	if (dst > src)
+	if (!str || !*str)
+		return (-1);
+	i = (*str)->len;
+	while (i <= n)
 	{
-		while (len--)
-			dst_c[len] = src_c[len];
+		if (!ft_string_push_back(str, filler))
+			return (0);
+		++i;
 	}
-	else
-	{
-		while (len--)
-			*dst_c++ = *src_c++;
-	}
-	return (dst);
+	(*str)->data[n] = value;
+	return (1);
 }

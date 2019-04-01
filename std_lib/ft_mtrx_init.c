@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_mtrx_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 15:32:43 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/23 22:36:27 by ehugh-be         ###   ########.fr       */
+/*   Created: 2019/01/10 22:27:24 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/01/11 03:29:44 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mtrx.h"
 
-char	*ft_itoa(int n)
+t_mtrx	*ft_mtrx_init(int w, int h, unsigned char el_size)
 {
-	int		nb;
-	int		len;
-	char	*ret;
+	t_mtrx	*ret;
+	char	t;
 
-	len = 2;
-	if (n < 0)
-		len++;
-	nb = n;
-	while (!(nb < 10 && nb > -10))
-	{
-		len++;
-		nb /= 10;
-	}
-	if (!(ret = (char *)malloc(sizeof(char) * len)))
+	if (!(ret = malloc(sizeof(t_mtrx))))
 		return (NULL);
-	ret[--len] = '\0';
-	nb = (n < 0) ? -1 : 1;
-	while (n || len)
+	if (el_size == MTRX_INT)
+		t = sizeof(int);
+	else if (el_size == MTRX_DOUBLE)
+		t = sizeof(double);
+	else
+		t = sizeof(float);
+	if (!(ret->mtrx = malloc(w * h * t)))
 	{
-		ret[--len] = n % 10 * nb + '0';
-		n /= 10;
+		free(ret);
+		return (NULL);
 	}
-	if (nb < 0)
-		ret[0] = '-';
+	ret->w = w;
+	ret->h = h;
+	ret->el_size = el_size;
+	ft_bzero(ret->mtrx, w * h * t);
 	return (ret);
 }

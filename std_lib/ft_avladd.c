@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_avladd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 21:53:06 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/22 22:08:19 by ehugh-be         ###   ########.fr       */
+/*   Created: 2018/12/04 14:12:51 by ehugh-be          #+#    #+#             */
+/*   Updated: 2018/12/04 15:58:41 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_avladd(t_btavl **tr, t_btavl *leaf, int (*f)(void *, void *, size_t))
 {
-	while (n--)
-		((unsigned char *)dst)[n] = ((unsigned char *)src)[n];
-	return (dst);
+	if (!tr)
+		return ;
+	if (!*tr)
+	{
+		*tr = leaf;
+		return ;
+	}
+	if (f((*tr)->data, leaf->data, leaf->size) < 0)
+		ft_avladd(&((*tr)->left), leaf, f);
+	else
+		ft_avladd(&((*tr)->right), leaf, f);
 }
