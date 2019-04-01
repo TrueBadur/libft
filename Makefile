@@ -6,14 +6,14 @@
 #    By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/29 15:05:00 by ehugh-be          #+#    #+#              #
-#    Updated: 2019/04/01 16:21:04 by ehugh-be         ###   ########.fr        #
+#    Updated: 2019/04/01 21:06:56 by ehugh-be         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAINLIB = libft.a
 OCL_NAME = libocl.a
 STD_LIB = std_lib.a
-SRC = $(wildcard std_lib/*/ft*.c) std_lib/get_next_line.c
+SRC = $(wildcard std_lib/*/*.c) $(wildcard std_lib/ft_*.c) std_lib/get_next_line.c
 OBJ = $(SRC:.c=.o)
 OCL_SRC = $(wildcard ft_ocl/*.c)
 OCL_OBJ = $(OCL_SRC:.c=.o)
@@ -22,14 +22,14 @@ LIBSPATH = -I ./std_lib/ -I ./std_lib/printf/
 #CFLAGS = -Wall -Wextra -Werror
 
 .c.a:
-	$(CC) $(CFLAGS) $(LIBSPATH) -c $< -o $*.o
-	ar r $@ $*.o
-	rm $*.o
+	@$(CC) $(CFLAGS) $(LIBSPATH) -c $< -o $*.o
+	@ar r $@ $*.o
+	@rm $*.o
 
 all: libft.a($(OBJ)) libocl.a($(OCL_OBJ))
 
 fclean: clean
-	@/bin/rm -f $(NAME) $(OCL_NAME)
+	@/bin/rm -f $(MAINLIB) $(OCL_NAME)
 
 clean:
 	@/bin/rm -f $(OBJ) $(OCL_OBJ)
