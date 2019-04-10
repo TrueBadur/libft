@@ -26,6 +26,8 @@
 # define IN_RANGE_CC(a, b, c) ((a) < (b) && (b) < (c))
 # define FT_ABS(x) (((x) > 0) ? (x) : -(x))
 # define FT_SIGN(x) (((x) > 0) ? 1 : -1)
+# define FT_MAX2(x, y) ((x) > (y) ? (x) : (y))
+# define FT_MIN2(x, y) ((x) < (y) ? (x) : (y))
 
 typedef struct		s_list
 {
