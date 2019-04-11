@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_avlsearch.c                                     :+:      :+:    :+:   */
+/*   ft_lst_delone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/06 18:43:37 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/06 18:48:32 by ehugh-be         ###   ########.fr       */
+/*   Created: 2018/11/26 13:50:44 by ehugh-be          #+#    #+#             */
+/*   Updated: 2018/11/29 14:25:28 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_avlsearch(t_btavl *tr, int key)
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	if (!tr)
-		return (NULL);
-	if (tr->key == key)
-		return (tr->data);
-	if (key < tr->key)
-		return (ft_avlsearch(tr->left, key));
+	if (!alst || !*alst)
+		return ;
+	if (del)
+		del((*alst)->data, (*alst)->content_size);
 	else
-		return (ft_avlsearch(tr->right, key));
+		free((*alst)->data);
+	free(*alst);
+	*alst = NULL;
+	alst = NULL;
 }

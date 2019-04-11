@@ -39,7 +39,7 @@ t_list	*ft_lstfind_v(t_list *lst, void *val, size_t s)
 	ret = lst;
 	while (ret->next)
 	{
-		if (!ft_memcmp(val, ret->content, s < ret->content_size ? s :
+		if (!ft_memcmp(val, ret->data, s < ret->content_size ? s :
 		ret->content_size))
 			return (ret);
 	}

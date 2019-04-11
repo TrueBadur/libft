@@ -12,7 +12,15 @@
 
 #include "libft.h"
 
-int				ft_string_fit(t_string **str_ptr)
+/*
+** In case of allocated for string memory is greater then actual string
+** function reallocates memory to fit the string.
+** @param str_ptr - pointer to string to be fit
+** @return - returns 1 if fitting gone well, 0 if allocation failed and -1 if
+** t_string is NULL
+*/
+
+int	ft_string_fit(t_string **str_ptr)
 {
 	t_string *str;
 

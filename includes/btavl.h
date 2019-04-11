@@ -34,5 +34,7 @@ t_btavl				*ft_avlbal(t_btavl *tr);
 t_btavl				*ft_avlins(t_btavl *tr, t_btavl *node);
 t_btavl				*ft_avlrem(t_btavl *tr, int key, void (*f)(void **));
 t_btavl				*ft_avlfree(t_btavl *tr);
-void				*ft_avlsearch(t_btavl *tr, int key);
+void				*ft_avlsearch(t_btavl *tr, int key, int ret_d);
+t_btavl				*ft_avlmin(t_btavl *tr);
+t_btavl				*ft_avlmax(t_btavl *tr);
 #endif

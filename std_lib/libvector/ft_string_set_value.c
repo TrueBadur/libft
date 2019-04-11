@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpop.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:47:57 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/11/28 13:59:30 by ehugh-be         ###   ########.fr       */
+/*   Created: 2019/01/16 22:40:21 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/01/16 23:44:33 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "t_vec.h"
 
-void	*ft_lstpop(t_list **lst)
+int			ft_string_set_value(t_string **str, size_t n, char filler,
+																char value)
 {
-	void	*content;
-	t_list	*lst_c;
+	size_t i;
 
-	if (!lst || !*lst)
-		return (NULL);
-	content = (*lst)->content;
-	lst_c = (*lst)->next;
-	free(*lst);
-	*lst = lst_c;
-	return (content);
+	if (!str || !*str)
+		return (-1);
+	i = (*str)->len;
+	while (i <= n)
+	{
+		if (!ft_string_push_back(str, filler))
+			return (0);
+		++i;
+	}
+	(*str)->data[n] = value;
+	return (1);
 }

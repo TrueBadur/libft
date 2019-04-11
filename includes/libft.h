@@ -31,7 +31,7 @@
 
 typedef struct		s_list
 {
-	void			*content;
+	void			*data;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;

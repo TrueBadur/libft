@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_avlrr.c                                         :+:      :+:    :+:   */
+/*   ft_lstpop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 13:30:48 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/07 02:36:14 by ehugh-be         ###   ########.fr       */
+/*   Created: 2018/11/28 13:47:57 by ehugh-be          #+#    #+#             */
+/*   Updated: 2018/11/28 13:59:30 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_btavl	*ft_avlrr(t_btavl *tr)
+void	*ft_lstpop(t_list **lst)
 {
-	t_btavl *tmp;
+	void	*content;
+	t_list	*lst_c;
 
-	if (!tr)
+	if (!lst || !*lst)
 		return (NULL);
-	tmp = tr->left;
-	tr->left = tmp->right;
-	tmp->right = tr;
-	ft_avlfixh(tmp);
-	ft_avlfixh(tr);
-	return (tmp);
+	content = (*lst)->data;
+	lst_c = (*lst)->next;
+	free(*lst);
+	*lst = lst_c;
+	return (content);
 }

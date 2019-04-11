@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vecdel.c                                        :+:      :+:    :+:   */
+/*   ft_make_string.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 13:32:17 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/07 02:14:24 by ehugh-be         ###   ########.fr       */
+/*   Created: 2019/01/23 15:08:29 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/01/23 15:09:28 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "t_vec.h"
 
-void	ft_vecdel(void **vect)
+t_string		*ft_make_string(size_t init_size)
 {
-	if (!vect || !*vect)
-		return ;
-	free(((t_vector *)(*vect))->data);
-	free(*vect);
-	*vect = NULL;
+	t_string *str;
+
+	str = (t_string*)malloc(sizeof(t_string) * 1);
+	if (!str)
+		return (0);
+	str->capacity = init_size <= 1 ? 2 : init_size;
+	str->data = (char*)malloc(sizeof(char) * (str->capacity));
+	if (!str->data)
+	{
+		free(str);
+		return (0);
+	}
+	str->data[0] = '\0';
+	str->len = 0;
+	str->info = 0;
+	return (str);
 }

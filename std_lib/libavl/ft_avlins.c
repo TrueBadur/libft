@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_avlfree.c                                       :+:      :+:    :+:   */
+/*   ft_avlins.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/06 15:36:52 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/06 17:56:38 by ehugh-be         ###   ########.fr       */
+/*   Created: 2018/12/05 15:28:41 by ehugh-be          #+#    #+#             */
+/*   Updated: 2018/12/06 19:08:18 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+/*
+** @param tr - libavl tree to which insert new node
+** @param node - node to insert
+** @return - pointer to balanced libavl tree with inserted node
+*/
 
-t_btavl	*ft_avlfree(t_btavl *tr)
+t_btavl	*ft_avlins(t_btavl *tr, t_btavl *node)
 {
+	if (!node)
+		return (tr);
 	if (!tr)
-		return (NULL);
-	if (tr->left)
-		ft_avlfree(tr->left);
-	if (tr->right)
-		ft_avlfree(tr->right);
-	free(tr->data);
-	free(tr);
-	return (NULL);
+		return (node);
+	if (node->key == tr->key)
+		return (tr);
+	if (node->key < tr->key)
+		tr->left = ft_avlins(tr->left, node);
+	else
+		tr->right = ft_avlins(tr->right, node);
+	return (ft_avlbal(tr));
 }

@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_avlbfact.c                                      :+:      :+:    :+:   */
+/*   ft_vecdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 13:15:04 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/07 02:34:30 by ehugh-be         ###   ########.fr       */
+/*   Created: 2018/11/30 13:32:17 by ehugh-be          #+#    #+#             */
+/*   Updated: 2018/12/07 02:14:24 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "t_vec.h"
 
-int	ft_avlbfact(t_btavl *node)
+void	ft_vecdel(void **vect)
 {
-	if (!node)
-		return (0);
-	return (ft_avlh(node->right) - ft_avlh(node->left));
+	if (!vect || !*vect)
+		return ;
+	free(((t_vector *)(*vect))->data);
+	free(*vect);
+	*vect = NULL;
 }

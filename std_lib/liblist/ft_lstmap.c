@@ -20,7 +20,7 @@ static void	*ft_dellst(t_list **lst)
 		return (NULL);
 	while (*lst)
 	{
-		free((*lst)->content);
+		free((*lst)->data);
 		tmp = (*lst)->next;
 		free(*lst);
 		*lst = tmp;

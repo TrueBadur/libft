@@ -14,8 +14,6 @@
 
 t_vector	*ft_vecremove(t_vector *vec, size_t strt, size_t s)
 {
-	void *tmp;
-
 	if (!vec)
 		return (t_vector*)(NULL);
 	if (strt > vec->len)

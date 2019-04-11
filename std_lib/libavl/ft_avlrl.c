@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_string.c                                   :+:      :+:    :+:   */
+/*   ft_avlrr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/23 15:09:39 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/23 15:10:13 by ehugh-be         ###   ########.fr       */
+/*   Created: 2018/12/05 13:30:48 by ehugh-be          #+#    #+#             */
+/*   Updated: 2018/12/07 02:35:56 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			ft_free_string(t_string **str)
+t_btavl	*ft_avlrl(t_btavl *tr)
 {
-	if (!str || !*str)
-		return ;
-	free((*str)->data);
-	free(*str);
-	*str = 0;
+	t_btavl *tmp;
+
+	if (!tr)
+		return (NULL);
+	tmp = tr->right;
+	tr->right = tmp->left;
+	tmp->left = tr;
+	ft_avlfixh(tr);
+	ft_avlfixh(tmp);
+	return (tmp);
 }

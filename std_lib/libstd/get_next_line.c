@@ -81,7 +81,7 @@ static t_vector	*ft_checkfd(t_btavl **tr, int key)
 
 	if (!tr)
 		return (NULL);
-	if (!(tmp = ft_avlsearch(*tr, key)))
+	if (!(tmp = ft_avlsearch(*tr, key, 1)))
 	{
 		if (!(tmp = ft_vecinit(BUFF_SIZE)))
 			return (NULL);

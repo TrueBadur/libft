@@ -10,40 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-MAINLIB = libft.a
-OCL_NAME = libocl.a
-SL_L_N = libstd.n libmtrx.n libvector.n libavl.n liblist.n libprintf.n
-SL_L_C = $(SL_L_N:.n=.clean)
-SL_L_F = $(SL_L_N:.n=.fclean)
-SL_L_R = $(SL_L_N:.n=.re)
-STD_LIB_PATH = std_lib/
-OCL_SRC = $(wildcard ft_ocl/*.c)
-OCL_OBJ = $(OCL_SRC:.c=.o)
-CC = clang
-LIBSPATH = -I ./includes
-CFLAGS = -Wall -Wextra -Werror
-
-.c.a:
-	@$(CC) $(CFLAGS) $(LIBSPATH) -c $< -o $*.o
-	@ar r $@ $*.o
-	@rm $*.o
-
-all: $(SL_L_N)
-	ar r lib/$(MAINLIB) $(wildcard lib/*.a)
-
-fclean: $(SL_L_F)
-	@/bin/rm -f lib/$(MAINLIB)
-
-clean: $(SL_L_C)
-
-re: fclean all
-
-lib%.n:
-	make -C $(STD_LIB_PATH)$(basename $@)
-
-lib%.clean:
-	make -C $(STD_LIB_PATH)$(basename $@) clean
-
-lib%.fclean:
-	make -C $(STD_LIB_PATH)$(basename $@) fclean
+NAME = libstd.a
+include ../Rules
 

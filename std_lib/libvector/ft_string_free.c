@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_avlins.c                                        :+:      :+:    :+:   */
+/*   ft_free_string.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 15:28:41 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/06 19:08:18 by ehugh-be         ###   ########.fr       */
+/*   Created: 2019/01/23 15:09:39 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/01/23 15:10:13 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "t_vec.h"
 
-t_btavl	*ft_avlins(t_btavl *tr, t_btavl *node)
+void			ft_free_string(t_string **str)
 {
-	if (!node)
-		return (tr);
-	if (!tr)
-		return (node);
-	if (node->key == tr->key)
-		return (tr);
-	if (node->key < tr->key)
-		tr->left = ft_avlins(tr->left, node);
-	else
-		tr->right = ft_avlins(tr->right, node);
-	return (ft_avlbal(tr));
+	if (!str || !*str)
+		return ;
+	free((*str)->data);
+	free(*str);
+	*str = 0;
 }
