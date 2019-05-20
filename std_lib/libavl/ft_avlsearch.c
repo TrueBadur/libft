@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btavl.h"
 
 t_btavl	*ft_avlmin(t_btavl *tr)
 {
-	while(tr->left)
+	while (tr->left)
 		tr = tr->left;
 	return (tr);
 }
 
-t_btavl *ft_avlmax(t_btavl *tr)
+t_btavl	*ft_avlmax(t_btavl *tr)
 {
 	while (tr->right)
 		tr = tr->right;

@@ -24,17 +24,23 @@ typedef struct		s_btavl
 	unsigned char	h;
 }					t_btavl;
 
-t_btavl				*ft_avlnew(void *data, int key, size_t size);
-unsigned char		ft_avlh(t_btavl *tr);
-int					ft_avlbfact(t_btavl *node);
+# ifdef FT_SOURCE_BTAVL
+
 void				ft_avlfixh(t_btavl *tr);
 t_btavl				*ft_avlrr(t_btavl *tr);
 t_btavl				*ft_avlrl(t_btavl *tr);
 t_btavl				*ft_avlbal(t_btavl *tr);
+# endif
+
+t_btavl				*ft_avlnew(void *data, int key, size_t size);
+unsigned char		ft_avlh(t_btavl *tr);
+int					ft_avlbfact(t_btavl *node);
 t_btavl				*ft_avlins(t_btavl *tr, t_btavl *node);
 t_btavl				*ft_avlrem(t_btavl *tr, int key, void (*f)(void **));
 t_btavl				*ft_avlfree(t_btavl *tr);
 void				*ft_avlsearch(t_btavl *tr, int key, int ret_d);
 t_btavl				*ft_avlmin(t_btavl *tr);
 t_btavl				*ft_avlmax(t_btavl *tr);
+t_vector			*ft_avltovec(t_btavl *tr, t_vector *vec);
+
 #endif

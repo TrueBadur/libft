@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btavl.h"
 
 void	ft_avladd(t_btavl **tr, t_btavl *leaf, int (*f)(void *, void *, size_t))
 {

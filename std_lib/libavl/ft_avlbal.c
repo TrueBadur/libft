@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#define FT_SOURCE_BTAVL
+#include "btavl.h"
 
 t_btavl	*ft_avlbal(t_btavl *tr)
 {

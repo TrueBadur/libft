@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btavl.h"
 
 unsigned char	ft_avlh(t_btavl *tr)
 {

@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#define FT_SOURCE_BTAVL
+#include "btavl.h"
 
 static t_btavl	*ft_avlrmmin(t_btavl *tr)
 {

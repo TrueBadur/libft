@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btavl.h"
 
 t_btavl	*ft_avlnew(void *data, int key, size_t size)
 {

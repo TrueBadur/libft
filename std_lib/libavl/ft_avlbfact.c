@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btavl.h"
 
 /*
 ** @param node - tree to get balance factor

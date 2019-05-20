@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "btavl.h"
 
-/**
- * @param tr - tree to be freed
- * @return - NULL pointer to be assigned to where tree was stored before
- */
+/*
+** @param tr - tree to be freed
+** @return - NULL pointer to be assigned to where tree was stored before
+*/
 
 t_btavl	*ft_avlfree(t_btavl *tr)
 {

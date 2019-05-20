@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#define FT_SOURCE_BTAVL
+#include "btavl.h"
+
 /*
 ** @param tr - libavl tree to which insert new node
 ** @param node - node to insert
