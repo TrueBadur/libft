@@ -19,6 +19,8 @@ SL_L_R = $(SL_L_N:.n=.re)
 STD_LIB_PATH = std_lib/
 OCL_SRC = $(wildcard ft_ocl/*.c)
 OCL_OBJ = $(OCL_SRC:.c=.o)
+AFILES = libstd.a libavl.a liblist.a libmtrx.a libprintf.a libvec.a
+AF_PATH = $(subst lib,lib/lib, $(AFILES))
 CC = clang
 LIBSPATH = -I ./includes
 CFLAGS = -Wall -Wextra -Werror
@@ -29,7 +31,7 @@ CFLAGS = -Wall -Wextra -Werror
 	@rm $*.o
 
 all: $(SL_L_N)
-	ar r lib/$(MAINLIB) $(wildcard lib/*.a)
+#	ar r lib/$(MAINLIB) $(AF_PATH)
 
 fclean: $(SL_L_F)
 	@/bin/rm -f lib/$(MAINLIB)
