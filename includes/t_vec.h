@@ -12,76 +12,75 @@
 
 #ifndef T_VEC_H
 # define T_VEC_H
-# include "libft.h"
+# include <stdlib.h>
 
 typedef struct		s_vector2
 {
-	int		x;
-	int		y;
+	int				x;
+	int				y;
 }					t_int2;
 
 typedef struct
 {
-	unsigned	x;
-	unsigned	y;
+	unsigned		x;
+	unsigned		y;
 }					t_uint2;
 
 typedef struct
 {
-	double		x;
-	double		y;
+	double			x;
+	double			y;
 }					t_double2;
 
 typedef struct		s_vector3
 {
-	int		x;
-	int		y;
-	int		z;
+	int				x;
+	int				y;
+	int				z;
 }					t_int3;
 
 typedef struct
 {
-	unsigned	x;
-	unsigned	y;
-	unsigned	z;
+	unsigned		x;
+	unsigned		y;
+	unsigned		z;
 }					t_uint3;
 
 typedef struct		s_vector3_f
 {
-	float		x;
-	float		y;
-	float		z;
+	float			x;
+	float			y;
+	float			z;
 }					t_float3;
 
 typedef struct
 {
-	double		x;
-	double		y;
-	double		z;
+	double			x;
+	double			y;
+	double			z;
 }					t_double3;
 
 typedef struct		s_vector4
 {
-	int	x;
-	int	y;
-	int	z;
-	int	w;
+	int				x;
+	int				y;
+	int				z;
+	int				w;
 }					t_int4;
 
 typedef union
 {
-	long	l;
-	double	d;
+	long			l;
+	double			d;
 }					t_dtol;
 
 typedef struct		s_vector4_f
 {
-	float		x;
-	float		y;
-	float		u;
-	float		v;
+	float			x;
+	float			y;
+	float			u;
+	float			v;
 }					t_float4;
-
 
 typedef struct		s_vector
 {
@@ -97,13 +96,14 @@ t_vector			*ft_vecpush(t_vector *vec, void *data, size_t s);
 t_vector			*ft_vecgrow(t_vector *vec, size_t s);
 t_vector			*ft_vecshrink(t_vector *vec, unsigned int offset);
 t_vector			*ft_vecremove(t_vector *vec, size_t strt, size_t s);
+int 				ft_vecbinsearch_int(t_vector *vec, int val);
 
 typedef struct		s_string
 {
-	char		*data;
-	size_t		len;
-	size_t		capacity;
-	int			info;
+	char			*data;
+	size_t			len;
+	size_t			capacity;
+	int				info;
 }					t_string;
 
 void				ft_print_string(t_string *str);

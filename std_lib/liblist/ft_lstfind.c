@@ -22,7 +22,7 @@ t_list	*ft_lstfind_n(t_list *lst, int num)
 	return (ret->next ? ret : NULL);
 }
 
-t_list *ft_lstfindlast(t_list *lst)
+t_list	*ft_lstfindlast(t_list *lst)
 {
 	t_list *ret;
 
