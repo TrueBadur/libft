@@ -23,7 +23,7 @@
 ** In case of int overflow behavior is undefined.
 */
 
-int	ft_atoi(const char *str)
+int		ft_atoi(const char *str)
 {
 	int				answer;
 	int				pos;
@@ -55,12 +55,12 @@ int	ft_atoi(const char *str)
 ** @param str - string to convert to int
 ** @param ans - pointer to integer where to store converted int
 ** @return - returns -1 if int overflow or int underflow had happened, 1 if
- * nonnumeric symbol was reached and 0 if only numerical symbols were read.
+** nonnumeric symbol was reached and 0 if only numerical symbols were read.
 **
 ** Skips space characters then while characters in string is numerical make int.
 ** Once non numerical symbol or end is reached stops and returning current
 ** 		value.
- */
+*/
 
 char	ft_atoi_safe(const char *str, int *ans)
 {
@@ -72,7 +72,7 @@ char	ft_atoi_safe(const char *str, int *ans)
 	pos = 1;
 	while (ft_isspace(*str))
 		str++;
-	str += (*str == '-') &&	(pos = -1) ? 1 : 0;
+	str += (*str == '-') && (pos = -1) ? 1 : 0;
 	str += (*str == '+') ? 1 : 0;
 	while (1)
 	{
