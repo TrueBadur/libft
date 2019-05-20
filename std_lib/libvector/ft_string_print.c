@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ocl_err_handler.c                                  :+:      :+:    :+:   */
+/*   ft_print_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/19 16:56:17 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/03/19 16:56:17 by ehugh-be         ###   ########.fr       */
+/*   Created: 2019/01/23 15:06:26 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/01/23 15:07:29 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ocl.h"
+#include <stdlib.h>
+#include "libft.h"
 
-void	ft_ocl_err_handler(const char *message)
+void			ft_fd_print_string(t_string *str, int fd)
 {
-	write(1, message, ft_strlen(message));
-	exit(10);
+	if (!str)
+	{
+		ft_putstr_fd("NO V_STRING\n", fd);
+		return ;
+	}
+	write(fd, str->data, str->len);
+}
+
+void			ft_print_string(t_string *str)
+{
+	if (!str)
+	{
+		ft_putstr("NO V_STRING\n");
+		return ;
+	}
+	write(1, str->data, str->len);
 }
