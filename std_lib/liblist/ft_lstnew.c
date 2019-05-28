@@ -21,10 +21,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	new->content_size = content_size;
 	new->data = NULL;
 	if (!content)
-	{
-		new->data = NULL;
 		new->content_size = 0;
-	}
 	else if (content_size <= sizeof(new->data))
 		ft_memcpy(&new->data, content, content_size);
 	else if (!(new->data = malloc(content_size)))
