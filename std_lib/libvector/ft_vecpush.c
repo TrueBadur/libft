@@ -6,11 +6,19 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 17:58:28 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/30 04:42:56 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/05/28 18:30:20 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Add data of size s to the end of the vector resizing vector if needed.
+** @param vec - vector to push data into
+** @param data - data to be added to vector
+** @param s - size of data to be added
+** @return vector with added data it may be new vector
+*/
 
 t_vector	*ft_vecpush(t_vector *vec, void *data, size_t s)
 {
