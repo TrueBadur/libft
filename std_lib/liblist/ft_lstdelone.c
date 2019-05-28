@@ -18,7 +18,7 @@ void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 		return ;
 	if (del)
 		del((*alst)->data, (*alst)->content_size);
-	else
+	else if ((*alst)->content_size > sizeof((*alst)->data))
 		free((*alst)->data);
 	free(*alst);
 	*alst = NULL;
