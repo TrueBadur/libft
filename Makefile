@@ -6,7 +6,7 @@
 #    By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/29 15:05:00 by ehugh-be          #+#    #+#              #
-#    Updated: 2019/04/01 21:06:56 by ehugh-be         ###   ########.fr        #
+#    Updated: 2019/06/03 21:24:39 by ehugh-be         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ CFLAGS = -Wall -Wextra -Werror
 	@rm $*.o
 
 all: $(SL_L_N)
+	@mkdir -p lib
 #	ar r lib/$(MAINLIB) $(AF_PATH)
 
 fclean: $(SL_L_F)
@@ -41,11 +42,14 @@ clean: $(SL_L_C)
 re: fclean all
 
 lib%.n:
+	@mkdir -p lib
 	make -C $(STD_LIB_PATH)$(basename $@)
 
 lib%.clean:
+	@mkdir -p lib
 	make -C $(STD_LIB_PATH)$(basename $@) clean
 
 lib%.fclean:
+	@mkdir -p lib
 	make -C $(STD_LIB_PATH)$(basename $@) fclean
 
