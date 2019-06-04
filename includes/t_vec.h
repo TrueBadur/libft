@@ -93,6 +93,7 @@ typedef struct		s_vector
 t_vector			*ft_vecinit(size_t cap);
 void				ft_vecdel(void **vect);
 t_vector			*ft_vecpush(t_vector *vec, void *data, size_t s);
+t_vector			*ft_vecpush_small(t_vector *vec, long data, size_t s);
 t_vector			*ft_vecgrow(t_vector *vec, size_t s);
 t_vector			*ft_vecshrink(t_vector *vec, unsigned int offset);
 t_vector			*ft_vecremove(t_vector *vec, size_t strt, size_t s);

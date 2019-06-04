@@ -38,3 +38,17 @@ t_vector	*ft_vecpush(t_vector *vec, void *data, size_t s)
 	vec->cap = it;
 	return (vec);
 }
+
+/*
+** Add data of size less or equals to long into vec (may be useful to insert
+** constants or enums to vectors without need to create additional variable)
+**
+** @param vec	-	vector to push data into
+** @param data	-	data to be added to vector
+** @param s		-	size of data to be added
+** @return		-	vector with added data it may be new vector
+*/
+t_vector	*ft_vecpush_small(t_vector *vec, long data, size_t s)
+{
+	return (ft_vecpush(vec, &data, s));
+}
