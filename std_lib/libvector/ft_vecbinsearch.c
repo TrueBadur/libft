@@ -27,7 +27,7 @@ int ft_vecbinsearch_int(t_vector *vec, int val)
 	
 	ret = vec->len / sizeof(int) / 2 - 1;
 	mod = (vec->len / sizeof(int) - ret) / 2;
-	while (ret && ret != vec->len)
+	while (ret && (unsigned)ret != vec->len)
 	{
 		tmp = ((int*)vec->data)[ret];
 		if (val == tmp)
