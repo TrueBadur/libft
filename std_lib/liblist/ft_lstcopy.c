@@ -13,20 +13,20 @@
 #include "libft.h"
 
 /*
- * Function copy given list to a new one without coping content of the list
- * nodes, so if some data stored in list node by reference new list node will
- * reference to the very same data.
- * @param lst pointer to the list to be copied
- * @return pointer to newly created list
- */
+** Function copy given list to a new one without coping content of the list
+** nodes, so if some data stored in list node by reference new list node will
+** reference to the very same data.
+** @param lst pointer to the list to be copied
+** @return pointer to newly created list
+*/
 
-t_list *ft_lstcopy(t_list *lst)
+t_list	*ft_lstcopy(t_list *lst)
 {
 	t_list *ret;
 	t_list *tmp;
 
 	if (!lst)
-		return NULL;
+		return (NULL);
 	ret = malloc(sizeof(t_list));
 	tmp = ret;
 	while (lst)

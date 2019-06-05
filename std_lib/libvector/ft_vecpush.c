@@ -48,6 +48,7 @@ t_vector	*ft_vecpush(t_vector *vec, void *data, size_t s)
 ** @param s		-	size of data to be added
 ** @return		-	vector with added data it may be new vector
 */
+
 t_vector	*ft_vecpush_small(t_vector *vec, long data, size_t s)
 {
 	return (ft_vecpush(vec, &data, s));
