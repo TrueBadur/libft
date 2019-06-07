@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_vec.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehugh-be <ehugh-be@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:41:24 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/06/07 13:24:18 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/06/07 20:00:59 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ struct				s_color
 
 typedef union		u_color4
 {
-	int 			i_col;
+	int				i_col;
 	struct s_color	c_col;
 }					t_ucol4;
 
@@ -131,17 +131,18 @@ int					ft_string_fit(t_string **str);
 int					ft_string_push_back(t_string **str, char c);
 int					ft_string_push_back_s(t_string **str_ptr, char *str);
 int					ft_string_push_back_n_s(t_string **str_ptr, char *str,
-		size_t n);
+						size_t n);
 int					ft_string_push_back_n_c(t_string **str_ptr,
-		long n, char c);
+						long n, char c);
 
 int					ft_string_set_value(t_string **str, size_t n, char filler,
-				char value);
+						char value);
 t_string			*ft_make_string(size_t init_size);
-t_ucol4 col_add(t_ucol4 a, t_ucol4 b);
-t_ucol4 col_dif(t_ucol4 a, t_ucol4 b);
-t_ucol4 col_div_val(t_ucol4 a, int val);
-t_ucol4 col_mult_val(t_ucol4 a, int val);
-t_ucol4 col_lerp(t_ucol4 start, t_ucol4 end, unsigned step, unsigned max);
+t_ucol4				col_add(t_ucol4 a, t_ucol4 b);
+t_ucol4				col_dif(t_ucol4 a, t_ucol4 b);
+t_ucol4				col_div_val(t_ucol4 a, int val);
+t_ucol4				col_mult_val(t_ucol4 a, int val);
+t_ucol4				col_lerp(t_ucol4 st, t_ucol4 end, unsigned step,
+						unsigned max);
 
 #endif
