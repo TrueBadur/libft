@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_vec.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ehugh-be <ehugh-be@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 13:41:24 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/03/19 18:06:52 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/06/07 13:24:18 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,20 @@ typedef struct		s_vector4_f
 	float			v;
 }					t_float4;
 
+struct				s_color
+{
+	unsigned char	a;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+};
+
+typedef union		u_color4
+{
+	int 			i_col;
+	struct s_color	c_col;
+}					t_ucol4;
+
 typedef struct		s_vector
 {
 	void			*data;
@@ -124,5 +138,10 @@ int					ft_string_push_back_n_c(t_string **str_ptr,
 int					ft_string_set_value(t_string **str, size_t n, char filler,
 				char value);
 t_string			*ft_make_string(size_t init_size);
+t_ucol4 col_add(t_ucol4 a, t_ucol4 b);
+t_ucol4 col_dif(t_ucol4 a, t_ucol4 b);
+t_ucol4 col_div_val(t_ucol4 a, int val);
+t_ucol4 col_mult_val(t_ucol4 a, int val);
+t_ucol4 col_lerp(t_ucol4 start, t_ucol4 end, unsigned step, unsigned max);
 
 #endif
