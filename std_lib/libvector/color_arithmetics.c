@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "t_vec.h"
+#include "../../includes/t_vec.h"
 
 t_ucol4	col_add(t_ucol4 a, t_ucol4 b)
 {

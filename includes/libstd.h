@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 16:27:02 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/09/04 16:28:16 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/09/04 16:31:29 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,5 @@ size_t				ft_strlen_u(const int *s, char f);
 char				ft_unilen(int u);
 int					ft_intlen(long int n);
 char				*ft_itoa_buf(long n, char *res);
+void				*ft_replace_pointer(void *old, void *new);
 #endif //LIBFT_LIBSTD_H

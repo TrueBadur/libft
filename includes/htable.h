@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 20:22:47 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/07/22 22:03:39 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/09/04 19:04:05 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ typedef struct		s_htable
 	size_t			iter;
 	void			*(*get)(struct s_htable*, char *key);
 	int				(*isin)(struct s_htable*, char *key);
-	struct t_htab	*(*add)(struct s_htable *self, char *key, void *data);
+	struct s_htable	*(*add)(struct s_htable *self, char *key, void *data);
 	void			*(*pop)(struct s_htable**, char *key);
-	struct t_htab	*(*rem)(struct s_htable*, char *key,
+	struct s_htable	*(*rem)(struct s_htable*, char *key,
 						void (*del)(void*));
 	int				(*next)(struct s_htable*, char **key, void **value);
 }					t_htab;

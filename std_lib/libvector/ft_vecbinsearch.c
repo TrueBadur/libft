@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "t_vec.h"
+#include "../../includes/t_vec.h"
 
 /*
 ** @param vec - sorted valid int vector that would be searched through

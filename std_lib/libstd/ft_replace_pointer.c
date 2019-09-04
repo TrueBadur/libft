@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vecdel.c                                        :+:      :+:    :+:   */
+/*   ft_replace_pointer.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 13:32:17 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/07 02:14:24 by ehugh-be         ###   ########.fr       */
+/*   Created: 2019/07/12 16:06:21 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/07/12 16:06:21 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/t_vec.h"
+#include "libft.h"
 
-void	ft_vecdel(void **vect)
+void	*ft_replace_pointer(void *old, void *new)
 {
-	if (!vect || !*vect)
-		return ;
-	free(((t_vector *)(*vect))->data);
-	free(*vect);
-	*vect = NULL;
+	free(old);
+	return (new);
 }
