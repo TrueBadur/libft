@@ -12,7 +12,7 @@
 
 #ifndef BTAVL_H
 # define BTAVL_H
-# include "libft.h"
+# include "libstd.h"
 # define TO_AVL_KEY(x) ((void*)((long)(x)))
 
 typedef enum		e_avl_key_type
