@@ -68,8 +68,10 @@ int			ft_stringify(t_string **str, t_arg_data *v[], va_list vl,
 {
 	void	**vl_p;
 
+	if (!a_s)
+		return (-1);
 	vl_p = malloc(sizeof(void *) * a_s->len);
-	if (!str || !*str || !vl_p || !a_s || !v || !*v)
+	if (!str || !*str || !vl_p || !v || !*v)
 	{
 		free(vl_p);
 		return (-1);
