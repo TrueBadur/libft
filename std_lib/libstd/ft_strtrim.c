@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_avlfixh.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 13:19:22 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/07 02:35:11 by ehugh-be         ###   ########.fr       */
+/*   Created: 2018/11/23 08:58:34 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/07/11 16:17:01 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_avlfixh(t_btavl *tr)
+char	*ft_strtrim(char const *s)
 {
-	unsigned char rh;
-	unsigned char lh;
+	size_t	len;
 
-	if (!tr)
-		return ;
-	rh = ft_avlh(tr->right);
-	lh = ft_avlh(tr->left);
-	tr->h = ((rh > lh) ? rh : lh) + 1;
+	if (!s)
+		return (NULL);
+	while (*s && ft_isspace(*s))
+		s++;
+	len = ft_strlen(s);
+	while (len > 0 && (ft_isspace(*(s + len - 1))))
+		len--;
+	if (len <= 0)
+		return (ft_strnew(1));
+	return (ft_strsub(s, 0, len));
 }

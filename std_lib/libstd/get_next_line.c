@@ -6,7 +6,7 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 12:51:25 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/30 03:57:12 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/07/10 18:44:00 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,16 @@ static t_vector	*ft_checkfd(t_btavl **tr, int key)
 
 	if (!tr)
 		return (NULL);
-	if (!(tmp = ft_avlsearch(*tr, key)))
+	if (!(tmp = ft_avlsearch(*tr, TO_AVL_KEY(key), 1, NULL)))
 	{
 		if (!(tmp = ft_vecinit(BUFF_SIZE)))
 			return (NULL);
-		if (!(tmtr = ft_avlnew(tmp, key, sizeof(t_vector))))
+		if (!(tmtr = ft_avlnew(tmp, TO_AVL_KEY(key), sizeof(t_vector), NUM32)))
 		{
 			free(tmp);
 			return (NULL);
 		}
-		*tr = ft_avlins(*tr, tmtr);
+		*tr = ft_avlins(*tr, tmtr, NULL);
 		free(tmp);
 		return (t_vector *)(tmtr->data);
 	}
@@ -110,7 +110,7 @@ int				get_next_line(const int fd, char **line)
 	if ((tmp = ft_checkbuf(vector, line, 0, BUFF_SIZE)))
 	{
 		if (tmp == -1)
-			ft_avlrem(tree, fd, &ft_vecdel);
+			ft_avlrem(tree, TO_AVL_KEY(fd), &ft_vecdel, NULL);
 		return (tmp);
 	}
 	tmp = ft_readtobuf(vector, line, fd);
@@ -118,7 +118,7 @@ int				get_next_line(const int fd, char **line)
 	{
 		if (vector->offset < vector->len)
 			tmp = ft_gnlsub(vector, vector->len - vector->offset, line);
-		tree = ft_avlrem(tree, fd, &ft_vecdel);
+		tree = ft_avlrem(tree, TO_AVL_KEY(fd), &ft_vecdel, NULL);
 	}
 	return (tmp);
 }

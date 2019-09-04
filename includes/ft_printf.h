@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_avlfree.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/06 15:36:52 by ehugh-be          #+#    #+#             */
-/*   Updated: 2018/12/06 17:56:38 by ehugh-be         ###   ########.fr       */
+/*   Created: 2019/01/16 22:40:21 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/04/01 16:21:42 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-t_btavl	*ft_avlfree(t_btavl *tr)
-{
-	if (!tr)
-		return (NULL);
-	if (tr->left)
-		ft_avlfree(tr->left);
-	if (tr->right)
-		ft_avlfree(tr->right);
-	free(tr->data);
-	free(tr);
-	return (NULL);
-}
+# include <stdarg.h>
+# include "libft.h"
+
+# define CLR_CNTRL '{'
+# define CLR 1
+
+int				ft_printf(const char *frmt, ...);
+int				ft_sprintf(char **buf, const char *frmt, ...);
+t_string		*ft_vprintf(const char *frmt, va_list vl);
+int				ft_fdprintf(int fd, const char *frmt, ...);
+
+#endif

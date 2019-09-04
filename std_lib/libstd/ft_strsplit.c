@@ -60,6 +60,12 @@ static void	*ft_ubivator(char ***ret_c, char **ret_l)
 	return (NULL);
 }
 
+/*
+** @param s - string that wil be splitted
+** @param c - symbol, which will be used to split the  string
+** @return - NULL terminated array of strings made by splitting s by c symbol
+*/
+
 char		**ft_strsplit(char const *s, char c)
 {
 	int			wlen;

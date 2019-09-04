@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mtrx_free.c                                     :+:      :+:    :+:   */
+/*   ft_isnumeric.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/10 22:34:09 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/01/11 04:17:55 by ehugh-be         ###   ########.fr       */
+/*   Created: 2019/07/09 17:05:08 by ehugh-be          #+#    #+#             */
+/*   Updated: 2019/07/09 17:05:08 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mtrx.h"
+#include "libft.h"
 
-void	ft_mtrx_destroy(t_mtrx **mtrx)
+/*
+** Check if given string consists only from digits
+** @param line - line to be checked
+** @return - 1 if there are only digits in line, 0 otherwise
+*/
+
+int	ft_isnumeric(char *line)
 {
-	if (!mtrx || !*mtrx)
-		return ;
-	free((*mtrx)->mtrx);
-	free(*mtrx);
-	*mtrx = NULL;
+	while(*line != '\0')
+	{
+		if (!ft_isdigit(*line))
+			return (0);
+		line++;
+	}
+	return (1);
 }
