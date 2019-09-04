@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_lst_delone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/09/04 16:26:55 by ehugh-be         ###   ########.fr       */
+/*   Created: 2018/11/26 13:50:44 by ehugh-be          #+#    #+#             */
+/*   Updated: 2018/11/29 14:25:28 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <stdlib.h>
-# include "get_next_line.h"
-# include "t_vec.h"
-# include "btavl.h"
-# include "mtrx.h"
-# include <unistd.h>
-# include <string.h>
-# include "ft_printf.h"
-# include "t_list.h"
-# include "libstd.h"
+#include "t_list.h"
 
-#endif
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+{
+	if (!alst || !*alst)
+		return ;
+	if (del)
+		del((*alst)->data, (*alst)->content_size);
+	else if ((*alst)->content_size > sizeof((*alst)->data))
+		free((*alst)->data);
+	free(*alst);
+	*alst = NULL;
+	alst = NULL;
+}

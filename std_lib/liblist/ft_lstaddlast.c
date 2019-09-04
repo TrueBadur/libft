@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/09/04 16:26:55 by ehugh-be         ###   ########.fr       */
+/*   Created: 2018/11/26 14:32:49 by ehugh-be          #+#    #+#             */
+/*   Updated: 2018/12/15 14:33:20 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <stdlib.h>
-# include "get_next_line.h"
-# include "t_vec.h"
-# include "btavl.h"
-# include "mtrx.h"
-# include <unistd.h>
-# include <string.h>
-# include "ft_printf.h"
-# include "t_list.h"
-# include "libstd.h"
+#include "t_list.h"
 
-#endif
+void	ft_lstaddlast(t_list **alst, t_list *new)
+{
+	t_list *tmp;
+
+	if (!alst || !new)
+		return ;
+	if (!*alst)
+	{
+		*alst = new;
+		return ;
+	}
+	tmp = *alst;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+}

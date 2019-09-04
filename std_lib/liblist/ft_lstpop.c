@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_lstpop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 15:55:20 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/09/04 16:26:55 by ehugh-be         ###   ########.fr       */
+/*   Created: 2018/11/28 13:47:57 by ehugh-be          #+#    #+#             */
+/*   Updated: 2018/11/28 13:59:30 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <stdlib.h>
-# include "get_next_line.h"
-# include "t_vec.h"
-# include "btavl.h"
-# include "mtrx.h"
-# include <unistd.h>
-# include <string.h>
-# include "ft_printf.h"
-# include "t_list.h"
-# include "libstd.h"
+#include "t_list.h"
 
-#endif
+void	*ft_lstpop(t_list **lst)
+{
+	void	*content;
+	t_list	*lst_c;
+
+	if (!lst || !*lst)
+		return (NULL);
+	content = (*lst)->data;
+	lst_c = (*lst)->next;
+	free(*lst);
+	*lst = lst_c;
+	return (content);
+}
