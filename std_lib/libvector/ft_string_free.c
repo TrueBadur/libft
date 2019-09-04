@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/t_vec.h"
+#include "t_vec.h"
 
 void			ft_free_string(t_string **str)
 {

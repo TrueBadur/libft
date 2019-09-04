@@ -29,6 +29,8 @@ get_deps:
 rem_deps:
 		@rm $(DEPS_SRC)
 
+all: $(STOREPATH)$(NAME)($(OBJ)) $(STOREPATH)$(MAINLIB)($(OBJ))
+
 fclean: clean
 	@/bin/rm -f $(STOREPATH)$(NAME)
 

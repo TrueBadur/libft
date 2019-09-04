@@ -97,4 +97,4 @@ char				ft_unilen(int u);
 int					ft_intlen(long int n);
 char				*ft_itoa_buf(long n, char *res);
 void				*ft_replace_pointer(void *old, void *new);
-#endif //LIBFT_LIBSTD_H
+#endif

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/t_vec.h"
+#include "t_vec.h"
 
 t_string		*ft_make_string(size_t init_size)
 {

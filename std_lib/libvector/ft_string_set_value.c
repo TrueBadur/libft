@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/t_vec.h"
+#include "t_vec.h"
 
 int			ft_string_set_value(t_string **str, size_t n, char filler,
 																char value)
