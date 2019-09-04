@@ -12,7 +12,7 @@
 
 #ifndef T_VEC_H
 # define T_VEC_H
-# include <stdlib.h>
+# include "libstd.h"
 
 typedef struct		s_vector2
 {
