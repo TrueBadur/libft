@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ocl_dev_cont_prog.h"
+#include "ocl.h"
 
-void            ft_ocl_err_handler(const char *message)
+void	ft_ocl_err_handler(const char *message)
 {
-	printf("%s\n", message);
+	write(1, message, ft_strlen(message));
 	exit(10);
 }
