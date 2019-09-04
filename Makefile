@@ -6,34 +6,52 @@
 #    By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/29 15:05:00 by ehugh-be          #+#    #+#              #
-#    Updated: 2019/04/01 16:21:04 by ehugh-be         ###   ########.fr        #
+#    Updated: 2019/09/04 16:55:50 by ehugh-be         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAINLIB = libft.a
 OCL_NAME = libocl.a
-STD_LIB = std_lib.a
-SRC = $(wildcard std_lib/*/ft*.c) std_lib/get_next_line.c
-OBJ = $(SRC:.c=.o)
+SL_L_N = libstd.n libmtrx.n libvector.n libavl.n liblist.n libprintf.n
+SL_L_C = $(SL_L_N:.n=.clean)
+SL_L_F = $(SL_L_N:.n=.fclean)
+SL_L_R = $(SL_L_N:.n=.re)
+STD_LIB_PATH = std_lib/
 OCL_SRC = $(wildcard ft_ocl/*.c)
 OCL_OBJ = $(OCL_SRC:.c=.o)
+AFILES = libstd.a libavl.a liblist.a libmtrx.a libprintf.a libvec.a
+AF_PATH = $(subst lib,lib/lib, $(AFILES))
 CC = clang
-LIBSPATH = -I ./std_lib/
-#CFLAGS = -Wall -Wextra -Werror
+LIBSPATH = -I ./includes
+CFLAGS = -Wall -Wextra -Werror
+
+export MAINLIB
 
 .c.a:
-	$(CC) $(CFLAGS) $(LIBSPATH) -c $< -o $*.o
-	ar r $@ $*.o
-	rm $*.o
+	@$(CC) $(CFLAGS) $(LIBSPATH) -c $< -o $*.o
+	@ar r $@ $*.o
+	@rm $*.o
 
-all: libft.a($(OBJ)) libocl.a($(OCL_OBJ))
+all: $(SL_L_N)
+	@mkdir -p lib
+#	ar r lib/$(MAINLIB) $(AF_PATH)
 
-fclean: clean
-	@/bin/rm -f $(NAME) $(OCL_NAME)
+fclean: $(SL_L_F)
+	@/bin/rm -f lib/$(MAINLIB)
 
-clean:
-	@/bin/rm -f $(OBJ) $(OCL_OBJ)
-	@/bin/rm -f libft.h.gch
+clean: $(SL_L_C)
 
 re: fclean all
+
+lib%.n:
+	@mkdir -p lib
+	make -C $(STD_LIB_PATH)$(basename $@)
+
+lib%.clean:
+	@mkdir -p lib
+	make -C $(STD_LIB_PATH)$(basename $@) clean
+
+lib%.fclean:
+	@mkdir -p lib
+	make -C $(STD_LIB_PATH)$(basename $@) fclean
 
