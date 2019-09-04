@@ -6,13 +6,14 @@
 /*   By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 16:44:14 by ehugh-be          #+#    #+#             */
-/*   Updated: 2019/07/10 15:25:59 by ehugh-be         ###   ########.fr       */
+/*   Updated: 2019/09/04 19:34:57 by ehugh-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BTAVL_H
 # define BTAVL_H
 # include "libstd.h"
+# include "t_vec.h"
 # define TO_AVL_KEY(x) ((void*)((long)(x)))
 
 typedef enum		e_avl_key_type

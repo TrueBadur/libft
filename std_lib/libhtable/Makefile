@@ -6,11 +6,11 @@
 #    By: ehugh-be <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/29 15:05:00 by ehugh-be          #+#    #+#              #
-#    Updated: 2019/09/04 19:31:05 by ehugh-be         ###   ########.fr        #
+#    Updated: 2019/09/04 19:36:18 by ehugh-be         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libhtab.a
+NAME = libhtable.a
 
 SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
@@ -32,7 +32,7 @@ all: $(STOREPATH)$(NAME)($(OBJ)) $(ADD_TO_MAIN_LIB)
 	@ar x libvec.a
 	@ar r $(NAME) *.o
 	@rm *.o __.* liblist.a libstd.a libvec.a
-	@mv libhtab.a $(STOREPATH)
+	@mv $(NAME) $(STOREPATH)
 
 .c.a:
 	@$(CC) $(CFLAGS) $(LIBHPATH) -c $< -o $*.o
