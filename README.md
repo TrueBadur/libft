@@ -32,14 +32,14 @@ To use only it ```#include "t_vector.h"``` and link ```libft/lib/libvec.a```
 
 ### 4. libavl - functions to work with AVL binary trees
 
-Includes functions to create new nodes of tree, to insert them into tree, searh tree for specified key, max or min value
+Includes functions to create new nodes of tree, to insert them into tree, search tree for specified key, max or min value
 and freeing the tree. There is function ```ft_avltovec``` in this module which converts avl tree to sorted vector. This function implies that you are also using t_vec module of this library.
 
 To use only it ```#include "btavl.h"``` and link ```libft/lib/libavl.a```
 
 ### 5. libprintf - selfmade implementation of printf function of ```<stdio.h>>```
 
-In this module there are implementations of following functions ```ft_printf```, ```ft_sprintf```, ```ft_vprintf``` and ```ft_fdprintf``` which match the behavior of correspponding functions of ```<stdio.h>```
+In this module there are implementations of following functions ```ft_printf```, ```ft_sprintf```, ```ft_vprintf``` and ```ft_fdprintf``` which match the behavior of corresponding functions of ```<stdio.h>```
 
 It's impossible to use only libprintf now, so it's obligatory to include ```libstd.a``` and ```libvec.a``` along with ``libprintf.a`` during linking process of compilation.
 
@@ -54,4 +54,3 @@ To use only it ```#include "mtrx.h"``` and link ```libft/lib/libmtrx.a```
 Functions to work with hash tables creating them, adding elements, iterating over them, and freeing them.
 
 To use only it ```#include "htable.h"``` and link ```libft/lib/libhtable.a```
-
