@@ -54,3 +54,30 @@ To use only it ```#include "mtrx.h"``` and link ```libft/lib/libmtrx.a```
 Functions to work with hash tables creating them, adding elements, iterating over them, and freeing them.
 
 To use only it ```#include "htable.h"``` and link ```libft/lib/libhtable.a```
+
+## Adding new submodules
+
+To add new submodule:
+
+- Place it in subfolder with ```lib``` prefix in ```std_lib``` folder.
+
+- Add following code into ```Makefile``` in your submodule folder:
+  ```
+  NAME = libname_of_submodule.a
+  include ../Rules
+  ```
+  where ```libname_of_submodule.a``` is name of your submodule with ```lib``` prefix and ```.a``` extension.
+
+  If your submodule have some dependencies, but you don't want to include whole lib for it on linking you may add that      dependencies directly to this module:
+
+  ```
+  DEPS_PATH = path_to_dependencies
+  DEPS_SRC = name_of_dependency_01 name_of_dependency_02 ...
+  DEPS = $(addprefix $(DEPS_PATH), $(DEPS_SRC))
+  ```
+
+- Add your submodule name with ```lib``` prefix and ```.n``` extencion to root's ```Makefile``` to ```SL_L_N``` variable.
+  After that this line should look like that:
+  ```
+  SL_L_N = libstd.n libvector.n libavl.n liblist.n libprintf.n libname_of_your_submodule.n
+  ```
